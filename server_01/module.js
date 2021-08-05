@@ -1,10 +1,13 @@
 var url = 'http://mamnonanhmai.tk';
 
-console.log("File name: "+__filename);
-console.log("Dir name: "+__dirname);
+const EventEmitter = require('events');
+class logger extends EventEmitter{
+    log(message) {
+        // send an http request
+        console.log(message);
 
-function log(message)
-{
-    console.log(message);
+        // trigger an event
+        this.emit('messagelogged', {id : 1, url : 'http://helloworld.com'})
+    }
 }
-module.exports = log;
+module.exports = logger;
